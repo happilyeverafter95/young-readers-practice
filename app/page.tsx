@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <main className="container">
       <section className="hero">
-        <h1>Young Readers Practice</h1>
+        <h1>Learn to read with Pinky</h1>
         <p>Short, fun reading steps for ages 4-6.</p>
         <div className="hero-actions">
           <Link href="/learn" className="primary-button">
