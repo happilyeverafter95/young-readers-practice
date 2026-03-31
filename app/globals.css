@@ -139,6 +139,9 @@ a {
 .secondary-button,
 .option-button,
 .tab-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 12px;
   min-height: 48px;
   padding: 0.7rem 1rem;
@@ -146,6 +149,7 @@ a {
   border: none;
   cursor: pointer;
   font-weight: 700;
+  text-align: center;
 }
 
 .primary-button {
@@ -180,6 +184,25 @@ a {
 .stage-card.locked,
 .activity-card.locked {
   opacity: 0.72;
+}
+
+.stage-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 230px;
+}
+
+.stage-card h3 {
+  margin: 0 0 0.6rem;
+}
+
+.stage-card p {
+  margin: 0 0 0.9rem;
+}
+
+.stage-card .primary-button,
+.stage-card .lock-text {
+  margin-top: auto;
 }
 
 .lock-text {
