@@ -1,24 +1,7 @@
 # Young Readers Practice
 
-A friendly kindergarten reading-comprehension website (ages 4-6) built with Next.js.
-
-## Features
-
-- Progressive learning path with 4 stages:
-  - Stage 1: very short rhyming phrases
-  - Stage 2: word-picture matching
-  - Stage 3: short sentence understanding
-  - Stage 4: simple who/what comprehension questions
-- Placeholder illustrations for every activity and question prompt
-- Child-friendly rewards:
-  - Star scoring (0-3 stars/activity)
-  - Stage badges
-  - Daily streak counter
-- Parent summary view:
-  - Completion rates
-  - Average score
-  - Recent activity
-- Local browser storage only (no account needed)
+A friendly kindergarten reading-comprehension website (ages 4-6) built with Next.js. 
+Hosted at https://young-readers-practice.mandygu925.workers.dev/
 
 ## Project Structure
 
