@@ -1,0 +1,285 @@
+:root {
+  --bg: #fff4e6;
+  --panel: #ffffff;
+  --ink: #4b2e2e;
+  --primary: #f97316;
+  --primary-dark: #ea580c;
+  --secondary: #fde68a;
+  --secondary-dark: #f59e0b;
+  --good: #16a34a;
+  --warn: #c2410c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+  background: linear-gradient(180deg, #fff7ed, #ffedd5);
+  color: var(--ink);
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.hero,
+.panel,
+.question-card,
+.stage-card,
+.activity-card {
+  background: var(--panel);
+  border: 2px solid #fed7aa;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 8px 18px rgba(194, 65, 12, 0.12);
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.hero-graphic {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sparkle-frame {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1.7rem;
+  color: #f59e0b;
+  filter: drop-shadow(0 2px 2px rgba(124, 45, 18, 0.22));
+  animation: sparklePulse 2.1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.sparkle-1 {
+  top: 6%;
+  left: 3%;
+}
+
+.sparkle-2 {
+  top: 9%;
+  right: 4%;
+  animation-delay: 0.45s;
+}
+
+.sparkle-3 {
+  bottom: 9%;
+  left: 6%;
+  animation-delay: 0.9s;
+}
+
+.sparkle-4 {
+  bottom: 7%;
+  right: 6%;
+  animation-delay: 1.3s;
+}
+
+.hero-graphic-image {
+  width: 100%;
+  max-width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px dashed #fdba74;
+  background: #fff7ed;
+}
+
+.hero-graphic-caption {
+  margin: 0.7rem 0 0;
+  font-weight: 700;
+  color: #9a3412;
+}
+
+@keyframes sparklePulse {
+  0% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8) rotate(0deg);
+    opacity: 0.5;
+  }
+}
+
+.hero h1 {
+  margin-top: 0.2rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 0.9rem;
+}
+
+.primary-button,
+.secondary-button,
+.option-button,
+.tab-button {
+  border-radius: 12px;
+  min-height: 48px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: var(--primary);
+  color: white;
+}
+
+.primary-button:hover {
+  background: var(--primary-dark);
+}
+
+.secondary-button {
+  background: var(--secondary);
+  color: #4a2d00;
+}
+
+.secondary-button:hover {
+  background: var(--secondary-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.small-text {
+  font-size: 0.92rem;
+}
+
+.stage-card.locked,
+.activity-card.locked {
+  opacity: 0.72;
+}
+
+.lock-text {
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.tab-row {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-button {
+  background: #ffedd5;
+  color: #7c2d12;
+}
+
+.tab-button.active {
+  background: #fdba74;
+}
+
+.tab-button.locked {
+  pointer-events: none;
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.activity-image {
+  width: 100%;
+  max-width: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  height: auto;
+  border-radius: 12px;
+  border: 2px dashed #fdba74;
+  background: #fff7ed;
+}
+
+.question-image {
+  max-width: 560px;
+  margin: 0 auto;
+  display: block;
+  min-height: 320px;
+}
+
+.question-card {
+  margin-top: 1rem;
+}
+
+.option-grid {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.85rem;
+}
+
+.option-button {
+  border: 2px solid #fdba74;
+  background: #fff7ed;
+  color: #7c2d12;
+  text-align: left;
+}
+
+.option-button.selected {
+  border-color: #f97316;
+  background: #ffedd5;
+}
+
+.good-feedback {
+  color: var(--good);
+  font-weight: 700;
+}
+
+.try-feedback {
+  color: var(--warn);
+  font-weight: 700;
+}
+
+.celebration {
+  text-align: center;
+  background: linear-gradient(180deg, #fff7ed, #fef3c7);
+  border-radius: 16px;
+  border: 2px solid #fdba74;
+  padding: 1.2rem;
+}
+
+.reward-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+}
+
+.badge-list,
+.parent-list {
+  margin: 0;
+  padding-left: 1rem;
+  line-height: 1.7;
+}
+
+.badge-item {
+  font-weight: 700;
+}
