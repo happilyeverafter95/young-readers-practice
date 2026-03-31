@@ -7,8 +7,7 @@ import { HomeClient } from "@/components/home-client";
 const stageDescriptions: Record<number, string> = {
   1: "Read very short, simple phrases.",
   2: "Match words to picture ideas.",
-  3: "Read tiny sentences and answer.",
-  4: "Answer simple who/what questions."
+  3: "Read tiny sentences and answer."
 };
 
 export default function HomePage() {
