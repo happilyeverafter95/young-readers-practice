@@ -1,4 +1,4 @@
-export type StageNumber = 1 | 2 | 3 | 4;
+export type StageNumber = 1 | 2 | 3;
 
 export type ActivityQuestion = {
   id: string;
@@ -21,8 +21,7 @@ export type Activity = {
 export const stageNames: Record<StageNumber, string> = {
   1: "First Little Words",
   2: "Word and Picture Match",
-  3: "Tiny Sentences",
-  4: "Who and What Questions"
+  3: "Tiny Sentences"
 };
 
 const placeholders = {
@@ -31,9 +30,7 @@ const placeholders = {
   matchWordPicture1: "/placeholders/stage2-match-1.svg",
   matchWordPicture2: "/placeholders/stage2-match-2.svg",
   shortSentence1: "/placeholders/stage3-sentences-1.svg",
-  shortSentence2: "/placeholders/stage3-sentences-2.svg",
-  comprehension1: "/placeholders/stage4-comprehension-1.svg",
-  comprehension2: "/placeholders/stage4-comprehension-2.svg"
+  shortSentence2: "/placeholders/stage3-sentences-2.svg"
 };
 
 export const activities: Activity[] = [
@@ -108,34 +105,10 @@ export const activities: Activity[] = [
       { id: "q2", prompt: "The fish swims fast. Who swims?", options: ["fish", "chair", "hat"], answerIndex: 0, feedback: "The fish swims.", imagePlaceholder: placeholders.shortSentence2 },
       { id: "q3", prompt: "I see two ducks. How many ducks?", options: ["two", "one", "five"], answerIndex: 0, feedback: "Two ducks, great job!", imagePlaceholder: placeholders.shortSentence2 }
     ]
-  },
-  {
-    id: "comprehension-who-what-1",
-    stage: 4,
-    title: "Who Did It?",
-    instructions: "Answer who and what questions from mini stories.",
-    imagePlaceholder: placeholders.comprehension1,
-    questions: [
-      { id: "q1", prompt: "Lily plants a seed. Who plants the seed?", options: ["Lily", "Bear", "Tom"], answerIndex: 0, feedback: "Lily plants the seed!", imagePlaceholder: placeholders.comprehension1 },
-      { id: "q2", prompt: "Ben reads a book. What does Ben read?", options: ["book", "apple", "truck"], answerIndex: 0, feedback: "Ben reads a book.", imagePlaceholder: placeholders.comprehension1 },
-      { id: "q3", prompt: "A dog chases a ball. What is chased?", options: ["ball", "shoe", "tree"], answerIndex: 0, feedback: "The dog chases the ball.", imagePlaceholder: placeholders.comprehension1 }
-    ]
-  },
-  {
-    id: "comprehension-who-what-2",
-    stage: 4,
-    title: "Story Question Time",
-    instructions: "Read and answer simple story questions.",
-    imagePlaceholder: placeholders.comprehension2,
-    questions: [
-      { id: "q1", prompt: "Nora waters the flower. Who waters the flower?", options: ["Nora", "Kai", "Mom"], answerIndex: 0, feedback: "Nora does!", imagePlaceholder: placeholders.comprehension2 },
-      { id: "q2", prompt: "The boy rides a bike. What does he ride?", options: ["bike", "boat", "kite"], answerIndex: 0, feedback: "He rides a bike.", imagePlaceholder: placeholders.comprehension2 },
-      { id: "q3", prompt: "We bake a cake. What do we bake?", options: ["cake", "leaf", "stone"], answerIndex: 0, feedback: "You got it: cake.", imagePlaceholder: placeholders.comprehension2 }
-    ]
   }
 ];
 
-export const allStages: StageNumber[] = [1, 2, 3, 4];
+export const allStages: StageNumber[] = [1, 2, 3];
 
 export function getActivitiesForStage(stage: StageNumber): Activity[] {
   return activities.filter((activity) => activity.stage === stage);
