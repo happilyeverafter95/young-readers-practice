@@ -36,15 +36,15 @@ export default function HomePage() {
           <span className="sparkle sparkle-3">✦</span>
           <span className="sparkle sparkle-4">✦</span>
           <Image
-            src="/placeholders/home-hero-placeholder.svg"
-            alt="Happy reading adventure placeholder illustration"
+            src="/placeholders/jellycat.png"
+            alt="Pinky the reading companion"
             width={960}
             height={420}
             className="hero-graphic-image"
             priority
           />
         </div>
-        <p className="hero-graphic-caption">Swap this image later with your custom front-page artwork.</p>
+        <p className="hero-graphic-caption">Read and learn with Pinky</p>
       </section>
 
       <HomeClient />
