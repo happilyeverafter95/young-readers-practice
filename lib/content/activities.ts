@@ -19,14 +19,21 @@ export type Activity = {
 };
 
 export const stageNames: Record<StageNumber, string> = {
-  1: "First Little Words",
+  1: "Picture and Word",
   2: "Word and Picture Match",
   3: "Tiny Sentences"
 };
 
+const wordOptionsCatRatBat = ["cat", "rat", "bat"] as const;
+const wordOptionsDogLogFrog = ["dog", "log", "frog"] as const;
+
 const placeholders = {
-  firstWords1: "/placeholders/stage1-first-words-1.svg",
-  firstWords2: "/placeholders/stage1-first-words-2.svg",
+  stage1PicCat: "/placeholders/stage1-cat.png",
+  stage1PicRat: "/placeholders/stage1-pic-rat.svg",
+  stage1PicBat: "/placeholders/stage1-bat.png",
+  stage1PicDog: "/placeholders/stage1-pic-dog.svg",
+  stage1PicLog: "/placeholders/stage1-pic-log.svg",
+  stage1PicFrog: "/placeholders/stage1-pic-frog.svg",
   matchWordPicture1: "/placeholders/stage2-match-1.svg",
   matchWordPicture2: "/placeholders/stage2-match-2.svg",
   shortSentence1: "/placeholders/stage3-sentences-1.svg",
@@ -35,27 +42,61 @@ const placeholders = {
 
 export const activities: Activity[] = [
   {
-    id: "first-words-1",
+    id: "stage1-picture-words-all",
     stage: 1,
-    title: "I Can Read It",
-    instructions: "Read the tiny phrase and pick what it says.",
-    imagePlaceholder: placeholders.firstWords1,
+    title: "Picture words",
+    instructions:
+      "Pick the word that matches the picture.",
+    imagePlaceholder: placeholders.stage1PicCat,
     questions: [
-      { id: "q1", prompt: "I see Sam.", options: ["I see Sam.", "I see sun.", "I see cap."], answerIndex: 0, feedback: "Nice reading!", imagePlaceholder: placeholders.firstWords1 },
-      { id: "q2", prompt: "Mat is big.", options: ["Mat is big.", "Mat is red.", "Mat is sad."], answerIndex: 0, feedback: "You got the whole phrase!", imagePlaceholder: placeholders.firstWords1 },
-      { id: "q3", prompt: "Tom can hop.", options: ["Tom can hop.", "Tom can nap.", "Tom can sit."], answerIndex: 0, feedback: "Great job reading that line!", imagePlaceholder: placeholders.firstWords1 }
-    ]
-  },
-  {
-    id: "first-words-2",
-    stage: 1,
-    title: "Short Story Lines",
-    instructions: "Pick the line that matches the simple sentence.",
-    imagePlaceholder: placeholders.firstWords2,
-    questions: [
-      { id: "q1", prompt: "Pam has a hat.", options: ["Pam has a hat.", "Pam has a bag.", "Pam has a map."], answerIndex: 0, feedback: "Excellent line reading!", imagePlaceholder: placeholders.firstWords2 },
-      { id: "q2", prompt: "The dog is in.", options: ["The dog is in.", "The dog is up.", "The dog is red."], answerIndex: 0, feedback: "Great work!", imagePlaceholder: placeholders.firstWords2 },
-      { id: "q3", prompt: "We sit on a log.", options: ["We sit on a log.", "We run in a fog.", "We hop on a box."], answerIndex: 0, feedback: "You read it carefully!", imagePlaceholder: placeholders.firstWords2 }
+      {
+        id: "q1",
+        prompt: "Which word goes with this picture?",
+        options: [...wordOptionsCatRatBat],
+        answerIndex: 0,
+        feedback: "Yes! Cat!",
+        imagePlaceholder: placeholders.stage1PicCat
+      },
+      {
+        id: "q2",
+        prompt: "Which word goes with this picture?",
+        options: [...wordOptionsCatRatBat],
+        answerIndex: 1,
+        feedback: "Nice! Rat!",
+        imagePlaceholder: placeholders.stage1PicRat
+      },
+      {
+        id: "q3",
+        prompt: "Which word goes with this picture?",
+        options: [...wordOptionsCatRatBat],
+        answerIndex: 2,
+        feedback: "Great! Bat!",
+        imagePlaceholder: placeholders.stage1PicBat
+      },
+      {
+        id: "q4",
+        prompt: "Which word goes with this picture?",
+        options: [...wordOptionsDogLogFrog],
+        answerIndex: 0,
+        feedback: "You got it! Dog!",
+        imagePlaceholder: placeholders.stage1PicDog
+      },
+      {
+        id: "q5",
+        prompt: "Which word goes with this picture?",
+        options: [...wordOptionsDogLogFrog],
+        answerIndex: 1,
+        feedback: "Right! Log!",
+        imagePlaceholder: placeholders.stage1PicLog
+      },
+      {
+        id: "q6",
+        prompt: "Which word goes with this picture?",
+        options: [...wordOptionsDogLogFrog],
+        answerIndex: 2,
+        feedback: "Super! Frog!",
+        imagePlaceholder: placeholders.stage1PicFrog
+      }
     ]
   },
   {

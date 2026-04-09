@@ -95,7 +95,11 @@ export default function ActivityPage() {
       <section className="question-card">
         <Image src={currentQuestion.imagePlaceholder} alt="" width={560} height={340} className="activity-image question-image" />
         <h2>{currentQuestion.prompt}</h2>
-        <div className="option-grid">
+        <div
+          className={
+            activeActivity.stage === 1 ? "option-grid option-grid--stage1-row" : "option-grid"
+          }
+        >
           {currentQuestion.options.map((option, optionIndex) => {
             const className = selected === optionIndex ? "option-button selected" : "option-button";
             return (
