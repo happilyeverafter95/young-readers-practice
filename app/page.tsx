@@ -5,7 +5,7 @@ import { StageCard } from "@/components/stage-card";
 import { HomeClient } from "@/components/home-client";
 
 const stageDescriptions: Record<number, string> = {
-  1: "Read very short, simple phrases.",
+  1: "Look at a picture and pick the matching word.",
   2: "Match words to picture ideas.",
   3: "Read tiny sentences and answer."
 };

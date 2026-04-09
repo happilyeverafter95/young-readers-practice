@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Picture placeholder for frog">
+  <rect width="800" height="500" fill="#fff7ed" />
+  <rect x="24" y="24" width="752" height="452" rx="24" fill="#ffedd5" stroke="#fdba74" stroke-width="6" stroke-dasharray="14 12" />
+  <text x="400" y="240" text-anchor="middle" font-size="72" font-family="Arial, sans-serif" fill="#9a3412">FROG</text>
+  <text x="400" y="320" text-anchor="middle" font-size="26" font-family="Arial, sans-serif" fill="#c2410c">Replace with frog picture</text>
+</svg>

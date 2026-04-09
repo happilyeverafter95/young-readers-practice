@@ -46,9 +46,16 @@ export function LearnClient({ selectedStage }: LearnClientProps) {
             activity={activity}
             record={progress.activityRecords[activity.id]}
             locked={!canAccessStage(activity.stage)}
+            compactLearnImage={selectedStage === 1}
           />
         ))}
       </section>
+
+      <div className="learn-nav-row">
+        <Link href="/" className="secondary-button">
+          Back to home
+        </Link>
+      </div>
     </main>
   );
 }
