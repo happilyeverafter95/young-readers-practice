@@ -1,3 +1,4 @@
+import { STAGE_COMPLETION_BADGE, normalizeBadgeId } from "@/lib/content/badges";
 import { activities, StageNumber, allStages, getActivitiesForStage } from "@/lib/content/activities";
 
 export type ActivityRecord = {
@@ -71,11 +72,11 @@ export function isStageUnlocked(progress: ProgressState, stage: StageNumber): bo
 }
 
 function stageBadge(stage: StageNumber): string {
-  return `stage-${stage}-star`;
+  return STAGE_COMPLETION_BADGE[stage];
 }
 
 function recalcBadges(progress: ProgressState): string[] {
-  const badges = new Set(progress.badges);
+  const badges = new Set(progress.badges.map(normalizeBadgeId));
   for (const stage of allStages) {
     const stageActivities = getActivitiesForStage(stage);
     if (stageActivities.length === 0) continue;
@@ -162,11 +163,13 @@ export function loadProgress(): ProgressState {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return emptyProgressState;
     const parsed = JSON.parse(raw) as ProgressState;
-    return {
+    const merged = {
       ...emptyProgressState,
       ...parsed,
+      badges: [...new Set((parsed.badges ?? []).map(normalizeBadgeId))],
       totalStars: recalcTotalStars(parsed.activityRecords ?? {})
     };
+    return { ...merged, badges: recalcBadges(merged) };
   } catch {
     return emptyProgressState;
   }

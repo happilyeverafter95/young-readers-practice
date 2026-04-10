@@ -476,15 +476,136 @@ a {
   gap: 0.8rem;
 }
 
-.badge-list,
+.progress-rewards .rewards-hero {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.rewards-hero-emoji {
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  line-height: 1;
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.15em;
+}
+
+.rewards-hero-lead {
+  margin: 0.35rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #9a3412;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.45;
+}
+
+.reward-stat {
+  position: relative;
+  padding-top: 0.25rem;
+}
+
+.reward-stat-emoji {
+  display: block;
+  font-size: 1.65rem;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.badges-panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0;
+}
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+}
+
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.15rem 0.85rem 1.25rem;
+  border-radius: 18px;
+  background: linear-gradient(165deg, #fffbeb 0%, #fef3c7 55%, #fde68a 100%);
+  border: 2px solid #fcd34d;
+  box-shadow: 0 4px 0 rgb(245 158 11 / 0.22);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.badge-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgb(245 158 11 / 0.28);
+}
+
+.badge-card-emoji {
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 0.45rem;
+  filter: drop-shadow(0 2px 3px rgb(251 191 36 / 0.45));
+}
+
+.badge-card-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #9a3412;
+  line-height: 1.25;
+}
+
+.badge-card-tagline {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #78350f;
+  line-height: 1.45;
+}
+
+.badge-empty {
+  text-align: center;
+  padding: 1.35rem 1rem 1.5rem;
+  margin-top: 0.5rem;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #fff7ed, #ffedd5);
+  border: 2px dashed #fdba74;
+}
+
+.badge-empty-emoji {
+  font-size: 3rem;
+  line-height: 1;
+  margin: 0 0 0.5rem;
+}
+
+.badge-empty-title {
+  margin: 0 0 0.35rem;
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: #9a3412;
+}
+
+.badge-empty-hint {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #78350f;
+  line-height: 1.5;
+  max-width: 22rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .parent-list {
   margin: 0;
   padding-left: 1rem;
   line-height: 1.7;
-}
-
-.badge-item {
-  font-weight: 700;
 }
 
 /* Home: adventure / journey panel */
