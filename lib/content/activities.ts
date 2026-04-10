@@ -29,11 +29,11 @@ const wordOptionsDogLogFrog = ["dog", "log", "frog"] as const;
 
 const placeholders = {
   stage1PicCat: "/placeholders/stage1-cat.png",
-  stage1PicRat: "/placeholders/stage1-pic-rat.svg",
+  stage1PicRat: "/placeholders/stage1-rat.png",
   stage1PicBat: "/placeholders/stage1-bat.png",
-  stage1PicDog: "/placeholders/stage1-pic-dog.svg",
-  stage1PicLog: "/placeholders/stage1-pic-log.svg",
-  stage1PicFrog: "/placeholders/stage1-pic-frog.svg",
+  stage1PicDog: "/placeholders/stage1-dog.png",
+  stage1PicLog: "/placeholders/stage1-log.png",
+  stage1PicFrog: "/placeholders/stage1-frog.png",
   matchWordPicture1: "/placeholders/stage2-match-1.svg",
   matchWordPicture2: "/placeholders/stage2-match-2.svg",
   shortSentence1: "/placeholders/stage3-sentences-1.svg",

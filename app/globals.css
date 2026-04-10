@@ -31,6 +31,26 @@ a {
   padding: 1.25rem;
 }
 
+.page-top-nav {
+  margin: 0 0 0.75rem;
+}
+
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #9a3412;
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-radius: 8px;
+}
+
+.page-back-link:hover {
+  color: #c2410c;
+  text-decoration: underline;
+}
+
 .hero,
 .panel,
 .question-card,
@@ -232,12 +252,6 @@ a {
   color: #6b7280;
 }
 
-.learn-nav-row {
-  margin: 1.5rem 0 0.25rem;
-  display: flex;
-  justify-content: center;
-}
-
 .tab-row {
   margin-top: 1rem;
   display: flex;
@@ -289,6 +303,11 @@ a {
 
 .question-card {
   margin-top: 1rem;
+}
+
+.question-card h2 {
+  text-align: center;
+  margin: 0.5rem 0 0.25rem;
 }
 
 .option-grid {

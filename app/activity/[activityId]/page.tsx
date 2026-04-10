@@ -31,10 +31,13 @@ export default function ActivityPage() {
   if (!activity || !question) {
     return (
       <main className="container">
+        <nav className="page-top-nav" aria-label="Activity navigation">
+          <Link href="/learn" className="page-back-link">
+            ← Back to learning path
+          </Link>
+        </nav>
         <h1>Activity not found</h1>
-        <Link href="/learn" className="primary-button">
-          Back to Learning Path
-        </Link>
+        <p>This activity is missing. Use the link above to return.</p>
       </main>
     );
   }
@@ -72,6 +75,11 @@ export default function ActivityPage() {
     const record = progress.activityRecords[activeActivity.id];
     return (
       <main className="container">
+        <nav className="page-top-nav" aria-label="Activity navigation">
+          <Link href="/learn" className="page-back-link">
+            ← Back to learning path
+          </Link>
+        </nav>
         <section className="celebration">
           <h1>You finished {activeActivity.title}!</h1>
           <p>{doneMessage}</p>
@@ -91,6 +99,11 @@ export default function ActivityPage() {
 
   return (
     <main className="container">
+      <nav className="page-top-nav" aria-label="Activity navigation">
+        <Link href="/learn" className="page-back-link">
+          ← Back to learning path
+        </Link>
+      </nav>
       <h1>{activeActivity.title}</h1>
       <p>{activeActivity.instructions}</p>
       <p className="small-text">
@@ -119,12 +132,6 @@ export default function ActivityPage() {
               </button>
             );
           })}
-        </div>
-
-        <div className="hero-actions">
-          <Link href="/learn" className="secondary-button">
-            Back
-          </Link>
         </div>
       </section>
 
