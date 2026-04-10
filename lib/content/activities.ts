@@ -19,8 +19,8 @@ export type Activity = {
 };
 
 export const stageNames: Record<StageNumber, string> = {
-  1: "Picture and Word",
-  2: "Word and Picture Match",
+  1: "Picture and Word Match",
+  2: "Rhyming words",
   3: "Tiny Sentences"
 };
 

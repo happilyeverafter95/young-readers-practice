@@ -15,7 +15,7 @@ export default function ActivityPage() {
   const [selected, setSelected] = useState<number | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [feedbackModal, setFeedbackModal] = useState<null | "correct" | "incorrect">(null);
 
   const question = activity?.questions[index];
   const isLast = activity ? index === activity.questions.length - 1 : false;
@@ -41,26 +41,31 @@ export default function ActivityPage() {
   const activeActivity = activity;
   const currentQuestion = question;
 
-  function submitAnswer() {
-    if (selected === null || submitted) return;
-    const isCorrect = selected === currentQuestion.answerIndex;
-    if (isCorrect) {
+  function handleOptionClick(optionIndex: number) {
+    if (feedbackModal !== null) return;
+    setSelected(optionIndex);
+    if (optionIndex === currentQuestion.answerIndex) {
       setCorrectCount((value) => value + 1);
+      setFeedbackModal("correct");
+    } else {
+      setFeedbackModal("incorrect");
     }
-    setSubmitted(true);
   }
 
-  function nextStep() {
-    if (!submitted) return;
+  function handleCorrectContinue() {
+    setFeedbackModal(null);
+    setSelected(null);
     if (isLast) {
-      const finalCorrect = correctCount;
-      completeOneActivity(activeActivity.id, finalCorrect, activeActivity.questions.length);
+      completeOneActivity(activeActivity.id, correctCount, activeActivity.questions.length);
       setShowCelebration(true);
       return;
     }
-    setSelected(null);
-    setSubmitted(false);
     setIndex((value) => value + 1);
+  }
+
+  function handleIncorrectTryAgain() {
+    setFeedbackModal(null);
+    setSelected(null);
   }
 
   if (showCelebration) {
@@ -107,8 +112,8 @@ export default function ActivityPage() {
                 type="button"
                 key={option}
                 className={className}
-                onClick={() => setSelected(optionIndex)}
-                disabled={submitted}
+                onClick={() => handleOptionClick(optionIndex)}
+                disabled={feedbackModal !== null}
               >
                 {option}
               </button>
@@ -116,27 +121,56 @@ export default function ActivityPage() {
           })}
         </div>
 
-        {submitted && (
-          <p className={selected === currentQuestion.answerIndex ? "good-feedback" : "try-feedback"}>
-            {selected === currentQuestion.answerIndex ? currentQuestion.feedback : "Good try! Let's keep learning."}
-          </p>
-        )}
-
         <div className="hero-actions">
-          {!submitted ? (
-            <button type="button" className="primary-button" onClick={submitAnswer} disabled={selected === null}>
-              Check Answer
-            </button>
-          ) : (
-            <button type="button" className="primary-button" onClick={nextStep}>
-              {isLast ? "Finish Activity" : "Next Question"}
-            </button>
-          )}
           <Link href="/learn" className="secondary-button">
             Back
           </Link>
         </div>
       </section>
+
+      {feedbackModal === "correct" ? (
+        <div className="feedback-modal-backdrop" role="presentation">
+          <div
+            className="feedback-modal feedback-modal--correct"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="feedback-modal-title"
+          >
+            <div className="feedback-modal-icon feedback-modal-icon--correct" aria-hidden>
+              ✓
+            </div>
+            <h2 id="feedback-modal-title" className="feedback-modal-heading">
+              You got it!
+            </h2>
+            <p className="feedback-modal-message">{currentQuestion.feedback}</p>
+            <button type="button" className="feedback-modal-button feedback-modal-button--correct" onClick={handleCorrectContinue}>
+              {isLast ? "Finish" : "Next"}
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {feedbackModal === "incorrect" ? (
+        <div className="feedback-modal-backdrop" role="presentation">
+          <div
+            className="feedback-modal feedback-modal--incorrect"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="feedback-modal-wrong-title"
+          >
+            <div className="feedback-modal-icon feedback-modal-icon--wrong" aria-hidden>
+              ✗
+            </div>
+            <h2 id="feedback-modal-wrong-title" className="feedback-modal-heading">
+              Try again
+            </h2>
+            <p className="feedback-modal-message">That is not the right word. Pick another answer.</p>
+            <button type="button" className="feedback-modal-button feedback-modal-button--wrong" onClick={handleIncorrectTryAgain}>
+              OK
+            </button>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
