@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { allStages, getActivitiesForStage, stageNames } from "@/lib/content/activities";
+import { getActivitiesForStage, publishedStages, stageNames } from "@/lib/content/activities";
 import { useProgress } from "@/components/progress-context";
 
-const MAX_STARS_SHOWN = 14;
+const MAX_TROPHIES_SHOWN = 14;
 
 function mascotMessage(completed: number, total: number): string {
   if (total === 0) return "Hi! I'm Pinky. Tap Start Learning and we'll read together!";
@@ -26,7 +26,7 @@ export function HomeClient() {
 
   let nextHref = "/learn";
   let nextLabel = "Explore all stages";
-  for (const stage of allStages) {
+  for (const stage of publishedStages) {
     if (!canAccessStage(stage)) continue;
     const acts = getActivitiesForStage(stage);
     const hasIncomplete = acts.some((a) => !progress.activityRecords[a.id]);
@@ -37,9 +37,9 @@ export function HomeClient() {
     }
   }
 
-  const shownStars = Math.min(progress.totalStars, MAX_STARS_SHOWN);
-  const starOverflow = Math.max(0, progress.totalStars - MAX_STARS_SHOWN);
-  const starWord = progress.totalStars === 1 ? "star" : "stars";
+  const shownTrophies = Math.min(progress.totalStars, MAX_TROPHIES_SHOWN);
+  const trophyOverflow = Math.max(0, progress.totalStars - MAX_TROPHIES_SHOWN);
+  const trophyWord = progress.totalStars === 1 ? "trophy" : "trophies";
 
   return (
     <section className="panel journey-panel">
@@ -61,36 +61,36 @@ export function HomeClient() {
         </div>
       </div>
 
-      <div className="journey-stars-block">
-        <p className="journey-stars-label">
-          You earned {progress.totalStars} {starWord}
+      <div className="journey-trophies-block">
+        <p className="journey-trophies-label">
+          You earned {progress.totalStars} {trophyWord}
         </p>
         {progress.totalStars === 0 ? (
-          <p className="journey-stars-empty">
-            <span className="journey-star-outline" aria-hidden>
-              ☆
+          <p className="journey-trophies-empty">
+            <span className="journey-trophy journey-trophy--placeholder" aria-hidden>
+              🏆
             </span>
-            <span className="journey-star-outline" aria-hidden>
-              ☆
+            <span className="journey-trophy journey-trophy--placeholder" aria-hidden>
+              🏆
             </span>
-            <span className="journey-star-outline" aria-hidden>
-              ☆
+            <span className="journey-trophy journey-trophy--placeholder" aria-hidden>
+              🏆
             </span>
           </p>
         ) : (
           <div
             key={progress.totalStars}
-            className="journey-stars journey-stars--entrance"
-            aria-label={`${progress.totalStars} stars`}
+            className="journey-trophies journey-trophies--entrance"
+            aria-label={`${progress.totalStars} trophies`}
           >
-            {Array.from({ length: shownStars }, (_, i) => (
-              <span key={i} className="journey-star journey-star--filled" aria-hidden>
-                ★
+            {Array.from({ length: shownTrophies }, (_, i) => (
+              <span key={i} className="journey-trophy journey-trophy--filled" aria-hidden>
+                🏆
               </span>
             ))}
-            {starOverflow > 0 ? (
-              <span className="journey-stars-more" aria-hidden>
-                +{starOverflow}
+            {trophyOverflow > 0 ? (
+              <span className="journey-trophies-more" aria-hidden>
+                +{trophyOverflow}
               </span>
             ) : null}
           </div>

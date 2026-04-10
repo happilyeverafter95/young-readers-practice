@@ -1,4 +1,4 @@
-import { allStages, StageNumber } from "@/lib/content/activities";
+import { publishedStages, StageNumber } from "@/lib/content/activities";
 import { LearnClient } from "@/components/learn-client";
 
 type LearnPageProps = {
@@ -8,6 +8,6 @@ type LearnPageProps = {
 export default async function LearnPage({ searchParams }: LearnPageProps) {
   const params = await searchParams;
   const stageFromQuery = Number(params.stage);
-  const selectedStage = (allStages.includes(stageFromQuery as StageNumber) ? stageFromQuery : 1) as StageNumber;
+  const selectedStage = (publishedStages.includes(stageFromQuery as StageNumber) ? stageFromQuery : 1) as StageNumber;
   return <LearnClient selectedStage={selectedStage} />;
 }

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { allStages, stageNames } from "@/lib/content/activities";
+import { publishedStages, stageNames } from "@/lib/content/activities";
 import { StageCard } from "@/components/stage-card";
 import { HomeClient } from "@/components/home-client";
 
@@ -50,7 +50,7 @@ export default function HomePage() {
       <HomeClient />
 
       <section className="grid">
-        {allStages.map((stage) => (
+        {publishedStages.map((stage) => (
           <StageCard
             key={stage}
             stage={stage}

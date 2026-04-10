@@ -2,14 +2,14 @@
 
 import { useMemo } from "react";
 import Link from "next/link";
-import { activities, allStages, getActivitiesForStage, stageNames } from "@/lib/content/activities";
+import { getActivitiesForStage, publishedStages, stageNames } from "@/lib/content/activities";
 import { useProgress } from "@/components/progress-context";
 
 export default function ParentPage() {
   const { progress, summary, canAccessStage, resetProgress } = useProgress();
 
   const stageSummaries = useMemo(() => {
-    return allStages.map((stage) => {
+    return publishedStages.map((stage) => {
       const stageActivities = getActivitiesForStage(stage);
       const completed = stageActivities.filter((activity) => progress.activityRecords[activity.id]).length;
       const avgScore =
@@ -40,7 +40,9 @@ export default function ParentPage() {
 
       <section className="panel reward-row">
         <div>
-          <h2>{summary.completedCount}/{activities.length}</h2>
+          <h2>
+            {summary.completedCount}/{summary.totalActivities}
+          </h2>
           <p>Completed activities</p>
         </div>
         <div>

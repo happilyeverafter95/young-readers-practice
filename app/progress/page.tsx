@@ -1,12 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { type BadgeDefinition, getBadgeDefinition, sortBadgeIds } from "@/lib/content/badges";
+import {
+  type BadgeDefinition,
+  filterPublishedBadgeIds,
+  getBadgeDefinition,
+  sortBadgeIds
+} from "@/lib/content/badges";
 import { useProgress } from "@/components/progress-context";
 
 export default function ProgressPage() {
   const { progress, summary } = useProgress();
-  const badgeIds = sortBadgeIds(progress.badges);
+  const badgeIds = sortBadgeIds(filterPublishedBadgeIds(progress.badges));
   const badgeCards = badgeIds
     .map((id) => getBadgeDefinition(id))
     .filter((def): def is BadgeDefinition => def != null);

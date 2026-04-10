@@ -1,5 +1,10 @@
 import { STAGE_COMPLETION_BADGE, normalizeBadgeId } from "@/lib/content/badges";
-import { activities, StageNumber, allStages, getActivitiesForStage } from "@/lib/content/activities";
+import {
+  StageNumber,
+  getActivitiesForStage,
+  getPublishedActivities,
+  publishedStages
+} from "@/lib/content/activities";
 
 export type ActivityRecord = {
   activityId: string;
@@ -77,7 +82,7 @@ function stageBadge(stage: StageNumber): string {
 
 function recalcBadges(progress: ProgressState): string[] {
   const badges = new Set(progress.badges.map(normalizeBadgeId));
-  for (const stage of allStages) {
+  for (const stage of publishedStages) {
     const stageActivities = getActivitiesForStage(stage);
     if (stageActivities.length === 0) continue;
     const records = stageActivities
@@ -142,13 +147,17 @@ export function completeActivity(
 }
 
 export function getProgressSummary(progress: ProgressState) {
-  const completedCount = Object.keys(progress.activityRecords).length;
-  const totalActivities = activities.length;
+  const published = getPublishedActivities();
+  const completedPublishedRecords = published
+    .map((activity) => progress.activityRecords[activity.id])
+    .filter(Boolean) as ActivityRecord[];
+  const completedCount = completedPublishedRecords.length;
+  const totalActivities = published.length;
   const completionRate = totalActivities === 0 ? 0 : completedCount / totalActivities;
   const averageBestScore =
-    completedCount === 0
+    completedPublishedRecords.length === 0
       ? 0
-      : Object.values(progress.activityRecords).reduce((sum, record) => sum + record.bestScore, 0) / completedCount;
+      : completedPublishedRecords.reduce((sum, record) => sum + record.bestScore, 0) / completedPublishedRecords.length;
   return {
     completedCount,
     totalActivities,
