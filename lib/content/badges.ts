@@ -1,4 +1,5 @@
 import type { StageNumber } from "./activities";
+import { publishedStages } from "./activities";
 
 /** Stable ids stored in progress (and localStorage). */
 export const STAGE_COMPLETION_BADGE: Record<StageNumber, string> = {
@@ -43,6 +44,22 @@ const LEGACY_BADGE_MAP: Record<string, string> = {
 };
 
 const BADGE_ORDER = ["picture-word-star", "picture-phrase-star", "sentence-superstar"] as const;
+
+const BADGE_STAGE: Partial<Record<string, StageNumber>> = {
+  "picture-word-star": 1,
+  "picture-phrase-star": 2,
+  "sentence-superstar": 3
+};
+
+/** Drop badges for stages that are not published (e.g. hidden until launch). */
+export function filterPublishedBadgeIds(ids: string[]): string[] {
+  const normalized = [...new Set(ids.map(normalizeBadgeId))];
+  return normalized.filter((id) => {
+    const stage = BADGE_STAGE[id];
+    if (stage === undefined) return true;
+    return publishedStages.includes(stage);
+  });
+}
 
 export function normalizeBadgeId(raw: string): string {
   return LEGACY_BADGE_MAP[raw] ?? raw;

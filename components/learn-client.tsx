@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo } from "react";
 import { ActivityCard } from "@/components/activity-card";
 import { useProgress } from "@/components/progress-context";
-import { StageNumber, activities, allStages, stageNames } from "@/lib/content/activities";
+import { StageNumber, activities, publishedStages, stageNames } from "@/lib/content/activities";
 
 type LearnClientProps = {
   selectedStage: StageNumber;
@@ -29,7 +29,7 @@ export function LearnClient({ selectedStage }: LearnClientProps) {
       <p>Pick a stage and complete each activity to unlock more challenges.</p>
 
       <div className="tab-row">
-        {allStages.map((stage) => {
+        {publishedStages.map((stage) => {
           const unlocked = canAccessStage(stage);
           return (
             <Link

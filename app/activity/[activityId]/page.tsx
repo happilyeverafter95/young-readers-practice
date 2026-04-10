@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { getActivityById } from "@/lib/content/activities";
+import { getActivityById, publishedStages } from "@/lib/content/activities";
 import { useProgress } from "@/components/progress-context";
 
 export default function ActivityPage() {
@@ -17,18 +17,7 @@ export default function ActivityPage() {
   const [showCelebration, setShowCelebration] = useState(false);
   const [feedbackModal, setFeedbackModal] = useState<null | "correct" | "incorrect">(null);
 
-  const question = activity?.questions[index];
-  const isLast = activity ? index === activity.questions.length - 1 : false;
-
-  const doneMessage = (() => {
-    if (!activity) return "";
-    const percent = Math.round((correctCount / activity.questions.length) * 100);
-    if (percent >= 90) return "Amazing work! You are a reading superstar!";
-    if (percent >= 70) return "Great reading! Keep going!";
-    return "Nice effort! Practice makes progress!";
-  })();
-
-  if (!activity || !question) {
+  if (!activity) {
     return (
       <main className="container">
         <nav className="page-top-nav" aria-label="Activity navigation">
@@ -41,6 +30,45 @@ export default function ActivityPage() {
       </main>
     );
   }
+
+  if (!publishedStages.includes(activity.stage)) {
+    return (
+      <main className="container">
+        <nav className="page-top-nav" aria-label="Activity navigation">
+          <Link href="/learn" className="page-back-link">
+            ← Back to learning path
+          </Link>
+        </nav>
+        <h1>Coming soon</h1>
+        <p>This reading step is not available yet. Pick a stage from the learning path.</p>
+      </main>
+    );
+  }
+
+  const question = activity.questions[index];
+  const isLast = index === activity.questions.length - 1;
+
+  const doneMessage = (() => {
+    const percent = Math.round((correctCount / activity.questions.length) * 100);
+    if (percent >= 90) return "Amazing work! You are a reading superstar!";
+    if (percent >= 70) return "Great reading! Keep going!";
+    return "Nice effort! Practice makes progress!";
+  })();
+
+  if (!question) {
+    return (
+      <main className="container">
+        <nav className="page-top-nav" aria-label="Activity navigation">
+          <Link href="/learn" className="page-back-link">
+            ← Back to learning path
+          </Link>
+        </nav>
+        <h1>Activity not found</h1>
+        <p>This activity is missing. Use the link above to return.</p>
+      </main>
+    );
+  }
+
   const activeActivity = activity;
   const currentQuestion = question;
 

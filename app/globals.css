@@ -713,11 +713,11 @@ a {
   transition: width 0.45s ease-out;
 }
 
-.journey-stars-block {
+.journey-trophies-block {
   margin-bottom: 0.85rem;
 }
 
-.journey-stars-label {
+.journey-trophies-label {
   margin: 0 0 0.45rem;
   font-weight: 800;
   font-size: 1.08rem;
@@ -725,29 +725,38 @@ a {
   text-align: center;
 }
 
-.journey-stars {
+.journey-trophies {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.2rem 0.35rem;
+  gap: 0.15rem 0.3rem;
 }
 
-.journey-star--filled {
-  font-size: 1.65rem;
+.journey-trophy {
+  font-size: 1.55rem;
   line-height: 1;
-  color: #eab308;
-  text-shadow: 0 1px 0 #ca8a04;
+  display: inline-block;
 }
 
-.journey-stars-more {
+.journey-trophy--filled {
+  filter: drop-shadow(0 1px 2px rgb(180 83 9 / 0.45));
+}
+
+.journey-trophy--placeholder {
+  font-size: 1.45rem;
+  opacity: 0.38;
+  filter: grayscale(0.25);
+}
+
+.journey-trophies-more {
   font-size: 1rem;
   font-weight: 800;
   color: #b45309;
   margin-left: 0.15rem;
 }
 
-.journey-stars-empty {
+.journey-trophies-empty {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -756,17 +765,11 @@ a {
   margin: 0;
 }
 
-.journey-star-outline {
-  font-size: 1.5rem;
-  color: #fcd34d;
-  opacity: 0.85;
+.journey-trophies--entrance {
+  animation: journeyTrophiesPop 0.9s ease-out;
 }
 
-.journey-stars--entrance {
-  animation: journeyStarsPop 0.9s ease-out;
-}
-
-@keyframes journeyStarsPop {
+@keyframes journeyTrophiesPop {
   0% {
     transform: scale(1);
   }
@@ -783,7 +786,7 @@ a {
     transition: none;
   }
 
-  .journey-stars--entrance {
+  .journey-trophies--entrance {
     animation: none;
   }
 }

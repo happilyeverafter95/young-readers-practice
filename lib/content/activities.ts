@@ -199,7 +199,15 @@ export const activities: Activity[] = [
   }
 ];
 
+/** Every stage that exists in `activities` (keep in sync when adding content). */
 export const allStages: StageNumber[] = [1, 2, 3];
+
+/** Stages shown in the app (tabs, home, progress). Omit stages that are not ready to ship. */
+export const publishedStages: StageNumber[] = [1, 2];
+
+export function getPublishedActivities(): Activity[] {
+  return activities.filter((activity) => publishedStages.includes(activity.stage));
+}
 
 export function getActivitiesForStage(stage: StageNumber): Activity[] {
   return activities.filter((activity) => activity.stage === stage);
