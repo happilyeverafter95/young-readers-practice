@@ -71,6 +71,17 @@ export default function ActivityPage() {
     setSelected(null);
   }
 
+  function handleInformationalContinue() {
+    const nextCorrect = correctCount + 1;
+    setCorrectCount(nextCorrect);
+    if (isLast) {
+      completeOneActivity(activeActivity.id, nextCorrect, activeActivity.questions.length);
+      setShowCelebration(true);
+      return;
+    }
+    setIndex((value) => value + 1);
+  }
+
   if (showCelebration) {
     const record = progress.activityRecords[activeActivity.id];
     return (
@@ -111,28 +122,49 @@ export default function ActivityPage() {
       </p>
 
       <section className="question-card">
-        <Image src={currentQuestion.imagePlaceholder} alt="" width={560} height={340} className="activity-image question-image" />
-        <h2>{currentQuestion.prompt}</h2>
-        <div
-          className={
-            activeActivity.stage === 1 ? "option-grid option-grid--stage1-row" : "option-grid"
-          }
-        >
-          {currentQuestion.options.map((option, optionIndex) => {
-            const className = selected === optionIndex ? "option-button selected" : "option-button";
-            return (
-              <button
-                type="button"
-                key={option}
-                className={className}
-                onClick={() => handleOptionClick(optionIndex)}
-                disabled={feedbackModal !== null}
-              >
-                {option}
-              </button>
-            );
-          })}
+        <div className="question-image-frame">
+          <Image
+            src={currentQuestion.imagePlaceholder}
+            alt=""
+            fill
+            priority={index === 0}
+            className="question-image-object"
+            sizes="(max-width: 640px) calc(100vw - 2.5rem), 560px"
+          />
         </div>
+        <h2>{currentQuestion.prompt}</h2>
+        {currentQuestion.informational ? (
+          <div className="informational-continue-wrap">
+            <button type="button" className="primary-button informational-next-button" onClick={handleInformationalContinue}>
+              {isLast ? "Finish" : "Next"}
+            </button>
+          </div>
+        ) : (
+          <div
+            className={
+              activeActivity.stage === 1
+                ? "option-grid option-grid--stage1-row"
+                : activeActivity.stage === 2
+                  ? "option-grid option-grid--single-column"
+                  : "option-grid"
+            }
+          >
+            {currentQuestion.options.map((option, optionIndex) => {
+              const className = selected === optionIndex ? "option-button selected" : "option-button";
+              return (
+                <button
+                  type="button"
+                  key={option}
+                  className={className}
+                  onClick={() => handleOptionClick(optionIndex)}
+                  disabled={feedbackModal !== null}
+                >
+                  {option}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       {feedbackModal === "correct" ? (
@@ -171,7 +203,11 @@ export default function ActivityPage() {
             <h2 id="feedback-modal-wrong-title" className="feedback-modal-heading">
               Try again
             </h2>
-            <p className="feedback-modal-message">That is not the right word. Pick another answer.</p>
+            <p className="feedback-modal-message">
+              {activeActivity.stage === 1
+                ? "That is not the right word. Pick another answer."
+                : "That is not the right answer. Try another choice!"}
+            </p>
             <button type="button" className="feedback-modal-button feedback-modal-button--wrong" onClick={handleIncorrectTryAgain}>
               OK
             </button>

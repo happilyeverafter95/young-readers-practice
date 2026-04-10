@@ -12,13 +12,21 @@ type ActivityCardProps = {
 };
 
 export function ActivityCard({ activity, record, locked, compactLearnImage }: ActivityCardProps) {
-  const imageClassName = compactLearnImage ? "activity-image activity-image--learn-compact" : "activity-image";
-  const imageWidth = compactLearnImage ? 300 : 420;
-  const imageHeight = compactLearnImage ? 188 : 260;
+  const frameClass = compactLearnImage
+    ? "learn-activity-preview-frame learn-activity-preview-frame--compact"
+    : "learn-activity-preview-frame";
 
   return (
     <article className={`activity-card ${locked ? "locked" : ""}`}>
-      <Image src={activity.imagePlaceholder} alt="" width={imageWidth} height={imageHeight} className={imageClassName} />
+      <div className={frameClass}>
+        <Image
+          src={activity.imagePlaceholder}
+          alt=""
+          fill
+          className="learn-activity-preview-image"
+          sizes={compactLearnImage ? "260px" : "420px"}
+        />
+      </div>
       <h3>{activity.title}</h3>
       <p>{activity.instructions}</p>
       {record ? (

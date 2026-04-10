@@ -7,6 +7,8 @@ export type ActivityQuestion = {
   answerIndex: number;
   feedback: string;
   imagePlaceholder: string;
+  /** Intro or story beat: no choices—learner taps Next (counts toward score). */
+  informational?: boolean;
 };
 
 export type Activity = {
@@ -20,7 +22,7 @@ export type Activity = {
 
 export const stageNames: Record<StageNumber, string> = {
   1: "Picture and Word Match",
-  2: "Rhyming words",
+  2: "Picture and Phrases",
   3: "Tiny Sentences"
 };
 
@@ -34,8 +36,13 @@ const placeholders = {
   stage1PicDog: "/placeholders/stage1-dog.png",
   stage1PicLog: "/placeholders/stage1-log.png",
   stage1PicFrog: "/placeholders/stage1-frog.png",
-  matchWordPicture1: "/placeholders/stage2-match-1.svg",
-  matchWordPicture2: "/placeholders/stage2-match-2.svg",
+  stage2SamWave: "/placeholders/stage2-sam-wave.svg",
+  stage2PamWave: "/placeholders/stage2-pam-wave.svg",
+  stage2SamRun: "/placeholders/stage2-sam-run.svg",
+  stage2PamRun: "/placeholders/stage2-pam-run.svg",
+  stage2BothHome: "/placeholders/stage2-both-home.svg",
+  stage2BothEat: "/placeholders/stage2-both-eat.svg",
+  stage2BothApples: "/placeholders/stage2-both-apples.svg",
   shortSentence1: "/placeholders/stage3-sentences-1.svg",
   shortSentence2: "/placeholders/stage3-sentences-2.svg"
 };
@@ -100,27 +107,70 @@ export const activities: Activity[] = [
     ]
   },
   {
-    id: "match-word-picture-1",
+    id: "stage2-picture-phrases",
     stage: 2,
-    title: "Find the Right Picture Word",
-    instructions: "Choose the word that matches the picture idea.",
-    imagePlaceholder: placeholders.matchWordPicture1,
+    title: "Sam and Pam",
+    instructions: "Read each picture and phrase. When you see answer choices, tap the best one!",
+    imagePlaceholder: placeholders.stage2SamWave,
     questions: [
-      { id: "q1", prompt: "A picture of a red apple. Pick the word.", options: ["apple", "train", "shoe"], answerIndex: 0, feedback: "Yes, that is apple!", imagePlaceholder: placeholders.matchWordPicture1 },
-      { id: "q2", prompt: "A picture of a small dog. Pick the word.", options: ["dog", "star", "drum"], answerIndex: 0, feedback: "Great! Dog is right.", imagePlaceholder: placeholders.matchWordPicture1 },
-      { id: "q3", prompt: "A picture of a blue car. Pick the word.", options: ["car", "milk", "tree"], answerIndex: 0, feedback: "Nice matching!", imagePlaceholder: placeholders.matchWordPicture1 }
-    ]
-  },
-  {
-    id: "match-word-picture-2",
-    stage: 2,
-    title: "Picture Word Helper",
-    instructions: "Pick the word that belongs to the picture.",
-    imagePlaceholder: placeholders.matchWordPicture2,
-    questions: [
-      { id: "q1", prompt: "A picture of a happy sun. Pick the word.", options: ["sun", "fish", "hat"], answerIndex: 0, feedback: "You found sun!", imagePlaceholder: placeholders.matchWordPicture2 },
-      { id: "q2", prompt: "A picture of a green frog. Pick the word.", options: ["frog", "clock", "jam"], answerIndex: 0, feedback: "Yes! Frog is correct.", imagePlaceholder: placeholders.matchWordPicture2 },
-      { id: "q3", prompt: "A picture of a tall tree. Pick the word.", options: ["tree", "cup", "pen"], answerIndex: 0, feedback: "Great reading!", imagePlaceholder: placeholders.matchWordPicture2 }
+      {
+        id: "q1",
+        informational: true,
+        prompt: "This is Sam!",
+        options: [],
+        answerIndex: 0,
+        feedback: "",
+        imagePlaceholder: placeholders.stage2SamWave
+      },
+      {
+        id: "q2",
+        informational: true,
+        prompt: "This is Pam!",
+        options: [],
+        answerIndex: 0,
+        feedback: "",
+        imagePlaceholder: placeholders.stage2PamWave
+      },
+      {
+        id: "q3",
+        prompt: "What is Sam doing?",
+        options: ["Sam ran", "Sam ate", "Sam hopped"],
+        answerIndex: 0,
+        feedback: "Yes! Sam ran!",
+        imagePlaceholder: placeholders.stage2SamRun
+      },
+      {
+        id: "q4",
+        prompt: "What is Pam doing?",
+        options: ["Pam ran too", "Pam ate fruit", "Pam hopped"],
+        answerIndex: 0,
+        feedback: "Right! Pam ran too!",
+        imagePlaceholder: placeholders.stage2PamRun
+      },
+      {
+        id: "q5",
+        prompt: "Where did Sam and Pam go?",
+        options: ["Home", "Park", "Lake"],
+        answerIndex: 0,
+        feedback: "Home! Great job!",
+        imagePlaceholder: placeholders.stage2BothHome
+      },
+      {
+        id: "q6",
+        prompt: "What is Sam and Pam doing now?",
+        options: ["They ate lunch", "They sat", "They ran"],
+        answerIndex: 0,
+        feedback: "They ate lunch—yum!",
+        imagePlaceholder: placeholders.stage2BothEat
+      },
+      {
+        id: "q7",
+        prompt: "What are they eating?",
+        options: ["apples", "grapes", "pear"],
+        answerIndex: 0,
+        feedback: "Apples! Crunchy and sweet!",
+        imagePlaceholder: placeholders.stage2BothApples
+      }
     ]
   },
   {

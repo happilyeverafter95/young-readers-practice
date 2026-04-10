@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Pam running">
+  <rect width="800" height="500" fill="#fce7f3"/>
+  <ellipse cx="400" cy="430" rx="320" ry="36" fill="#f9a8d4" opacity="0.4"/>
+  <g transform="translate(420 258) rotate(6)">
+    <path d="M-48 -108 Q-48 -138 -20 -148 Q0 -154 20 -148 Q48 -138 48 -108" fill="#92400e"/>
+    <circle cx="0" cy="-82" r="46" fill="#fdba74"/>
+    <circle cx="-12" cy="-88" r="5" fill="#1e293b"/>
+    <circle cx="12" cy="-88" r="5" fill="#1e293b"/>
+    <path d="M-8 -70 L8 -70" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <rect x="-32" y="-30" width="64" height="86" rx="14" fill="#db2777"/>
+    <rect x="-5" y="-48" width="16" height="40" rx="8" fill="#fdba74" transform="rotate(45 -5 -48)"/>
+    <rect x="18" y="-32" width="16" height="46" rx="8" fill="#fdba74" transform="rotate(-30 18 -32)"/>
+    <path d="M-24 58 L-52 118 L-28 126 L-2 72" fill="#9d174d"/>
+    <path d="M16 56 L48 112 L28 120 L6 68" fill="#9d174d"/>
+  </g>
+  <text x="400" y="470" text-anchor="middle" font-size="22" font-family="system-ui,sans-serif" fill="#9d174d" font-weight="700">Go, Pam!</text>
+</svg>

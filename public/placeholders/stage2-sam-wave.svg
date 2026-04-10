@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Boy waving hello">
+  <rect width="800" height="500" fill="#e0f2fe"/>
+  <ellipse cx="400" cy="420" rx="280" ry="40" fill="#bae6fd" opacity="0.5"/>
+  <g transform="translate(400 260)">
+    <circle cx="0" cy="-90" r="52" fill="#fdba74"/>
+    <ellipse cx="0" cy="-95" rx="48" ry="8" fill="#451a03" opacity="0.35"/>
+    <circle cx="-16" cy="-98" r="6" fill="#1e293b"/>
+    <circle cx="16" cy="-98" r="6" fill="#1e293b"/>
+    <path d="M-12 -78 Q0 -68 12 -78" fill="none" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <rect x="-38" y="-38" width="76" height="100" rx="16" fill="#3b82f6"/>
+    <rect x="-48" y="-28" width="22" height="70" rx="10" fill="#fdba74" transform="rotate(-25 -48 -28)"/>
+    <rect x="26" y="-18" width="22" height="70" rx="10" fill="#fdba74" transform="rotate(110 26 -18)"/>
+    <rect x="-22" y="62" width="22" height="72" rx="10" fill="#1e40af"/>
+    <rect x="0" y="62" width="22" height="72" rx="10" fill="#1e40af"/>
+  </g>
+  <text x="400" y="440" text-anchor="middle" font-size="26" font-family="system-ui,sans-serif" fill="#0369a1" font-weight="700">Sam</text>
+</svg>

@@ -3,7 +3,7 @@ import type { StageNumber } from "./activities";
 /** Stable ids stored in progress (and localStorage). */
 export const STAGE_COMPLETION_BADGE: Record<StageNumber, string> = {
   1: "picture-word-star",
-  2: "rhyme-ranger",
+  2: "picture-phrase-star",
   3: "sentence-superstar"
 };
 
@@ -21,11 +21,11 @@ export const BADGE_CATALOG: Record<string, BadgeDefinition> = {
     title: "Picture Word Star",
     tagline: "You matched every word to a picture!"
   },
-  "rhyme-ranger": {
-    id: "rhyme-ranger",
-    emoji: "🎵",
-    title: "Rhyme Ranger",
-    tagline: "You finished every rhyming adventure!"
+  "picture-phrase-star": {
+    id: "picture-phrase-star",
+    emoji: "🗣️",
+    title: "Picture Phrase Star",
+    tagline: "You read every picture and phrase story!"
   },
   "sentence-superstar": {
     id: "sentence-superstar",
@@ -37,11 +37,12 @@ export const BADGE_CATALOG: Record<string, BadgeDefinition> = {
 
 const LEGACY_BADGE_MAP: Record<string, string> = {
   "stage-1-star": "picture-word-star",
-  "stage-2-star": "rhyme-ranger",
-  "stage-3-star": "sentence-superstar"
+  "stage-2-star": "picture-phrase-star",
+  "stage-3-star": "sentence-superstar",
+  "rhyme-ranger": "picture-phrase-star"
 };
 
-const BADGE_ORDER = ["picture-word-star", "rhyme-ranger", "sentence-superstar"] as const;
+const BADGE_ORDER = ["picture-word-star", "picture-phrase-star", "sentence-superstar"] as const;
 
 export function normalizeBadgeId(raw: string): string {
   return LEGACY_BADGE_MAP[raw] ?? raw;

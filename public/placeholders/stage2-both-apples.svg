@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Sam and Pam eating apples">
+  <rect width="800" height="500" fill="#ecfccb"/>
+  <rect x="120" y="290" width="560" height="22" rx="8" fill="#854d0e"/>
+  <rect x="160" y="240" width="480" height="56" rx="12" fill="#fef9c3"/>
+  <g transform="translate(260 255)">
+    <circle cx="-8" cy="8" r="22" fill="#ef4444"/>
+    <path d="M-8 -18 L-8 -8" stroke="#365314" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(540 255)">
+    <circle cx="8" cy="8" r="22" fill="#ef4444"/>
+    <path d="M8 -18 L8 -8" stroke="#365314" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(220 185)">
+    <circle cx="0" cy="-40" r="24" fill="#fdba74"/>
+    <rect x="-16" y="-16" width="32" height="44" rx="8" fill="#2563eb"/>
+  </g>
+  <g transform="translate(580 185)">
+    <circle cx="0" cy="-40" r="22" fill="#fdba74"/>
+    <rect x="-14" y="-16" width="28" height="44" rx="8" fill="#db2777"/>
+  </g>
+  <text x="400" y="430" text-anchor="middle" font-size="24" font-family="system-ui,sans-serif" fill="#365314" font-weight="700">Crunchy apples</text>
+</svg>

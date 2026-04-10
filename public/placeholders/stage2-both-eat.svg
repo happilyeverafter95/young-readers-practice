@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Sam and Pam eating at a table">
+  <rect width="800" height="500" fill="#fff7ed"/>
+  <rect x="120" y="280" width="560" height="24" rx="8" fill="#92400e"/>
+  <rect x="140" y="220" width="520" height="64" rx="12" fill="#fed7aa"/>
+  <ellipse cx="280" cy="248" rx="40" ry="16" fill="#fef3c7"/>
+  <ellipse cx="520" cy="248" rx="40" ry="16" fill="#fef3c7"/>
+  <g transform="translate(230 200)">
+    <circle cx="0" cy="-50" r="26" fill="#fdba74"/>
+    <rect x="-18" y="-24" width="36" height="48" rx="8" fill="#3b82f6"/>
+  </g>
+  <g transform="translate(570 200)">
+    <circle cx="0" cy="-50" r="24" fill="#fdba74"/>
+    <rect x="-16" y="-24" width="32" height="48" rx="8" fill="#db2777"/>
+  </g>
+  <text x="400" y="420" text-anchor="middle" font-size="24" font-family="system-ui,sans-serif" fill="#9a3412" font-weight="700">Lunch time</text>
+</svg>

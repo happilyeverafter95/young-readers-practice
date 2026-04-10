@@ -44,14 +44,14 @@ export function LearnClient({ selectedStage }: LearnClientProps) {
         })}
       </div>
 
-      <section className="grid">
+      <section className={`grid${selectedStage === 2 ? " grid--learn-single" : ""}`}>
         {stageActivities.map((activity) => (
           <ActivityCard
             key={activity.id}
             activity={activity}
             record={progress.activityRecords[activity.id]}
             locked={!canAccessStage(activity.stage)}
-            compactLearnImage={selectedStage === 1}
+            compactLearnImage={selectedStage === 1 || selectedStage === 2}
           />
         ))}
       </section>
