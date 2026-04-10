@@ -20,6 +20,11 @@ export function LearnClient({ selectedStage }: LearnClientProps) {
 
   return (
     <main className="container">
+      <nav className="page-top-nav" aria-label="Learning path navigation">
+        <Link href="/" className="page-back-link">
+          ← Back to home
+        </Link>
+      </nav>
       <h1>Learning Path</h1>
       <p>Pick a stage and complete each activity to unlock more challenges.</p>
 
@@ -50,12 +55,6 @@ export function LearnClient({ selectedStage }: LearnClientProps) {
           />
         ))}
       </section>
-
-      <div className="learn-nav-row">
-        <Link href="/" className="secondary-button">
-          Back to home
-        </Link>
-      </div>
     </main>
   );
 }

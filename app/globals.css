@@ -31,6 +31,26 @@ a {
   padding: 1.25rem;
 }
 
+.page-top-nav {
+  margin: 0 0 0.75rem;
+}
+
+.page-back-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #9a3412;
+  text-decoration: none;
+  padding: 0.35rem 0;
+  border-radius: 8px;
+}
+
+.page-back-link:hover {
+  color: #c2410c;
+  text-decoration: underline;
+}
+
 .hero,
 .panel,
 .question-card,
@@ -232,12 +252,6 @@ a {
   color: #6b7280;
 }
 
-.learn-nav-row {
-  margin: 1.5rem 0 0.25rem;
-  display: flex;
-  justify-content: center;
-}
-
 .tab-row {
   margin-top: 1rem;
   display: flex;
@@ -291,6 +305,11 @@ a {
   margin-top: 1rem;
 }
 
+.question-card h2 {
+  text-align: center;
+  margin: 0.5rem 0 0.25rem;
+}
+
 .option-grid {
   display: grid;
   gap: 0.65rem;
@@ -341,6 +360,106 @@ a {
 .try-feedback {
   color: var(--warn);
   font-weight: 700;
+}
+
+.feedback-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(30, 20, 15, 0.55);
+}
+
+.feedback-modal {
+  width: 100%;
+  max-width: 22rem;
+  border-radius: 20px;
+  padding: 1.5rem 1.25rem 1.35rem;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border: 5px solid;
+}
+
+.feedback-modal--correct {
+  background: linear-gradient(180deg, #ecfdf5, #d1fae5);
+  border-color: #16a34a;
+  color: #14532d;
+}
+
+.feedback-modal--incorrect {
+  background: linear-gradient(180deg, #fff7ed, #ffedd5);
+  border-color: #ea580c;
+  color: #7c2d12;
+}
+
+.feedback-modal-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 0.65rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.feedback-modal-icon--correct {
+  background: #16a34a;
+  color: #fff;
+  border: 4px solid #15803d;
+}
+
+.feedback-modal-icon--wrong {
+  background: #ea580c;
+  color: #fff;
+  border: 4px solid #c2410c;
+}
+
+.feedback-modal-heading {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 5vw, 1.85rem);
+  font-weight: 800;
+}
+
+.feedback-modal-message {
+  margin: 0 0 1.1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.feedback-modal-button {
+  min-height: 52px;
+  min-width: 10rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.feedback-modal-button--correct {
+  background: #16a34a;
+  color: #fff;
+}
+
+.feedback-modal-button--correct:hover {
+  background: #15803d;
+}
+
+.feedback-modal-button--wrong {
+  background: #ea580c;
+  color: #fff;
+}
+
+.feedback-modal-button--wrong:hover {
+  background: #c2410c;
 }
 
 .celebration {
