@@ -16,7 +16,7 @@
 
 body {
   margin: 0;
-  font-family: "Trebuchet MS", "Comic Sans MS", Arial, sans-serif;
+  font-family: var(--font-nunito), system-ui, sans-serif;
   background: linear-gradient(180deg, #fff7ed, #ffedd5);
   color: var(--ink);
 }
@@ -485,4 +485,175 @@ a {
 
 .badge-item {
   font-weight: 700;
+}
+
+/* Home: adventure / journey panel */
+.journey-panel {
+  background: linear-gradient(180deg, #fffbeb, #fff7ed);
+  border-color: #fcd34d;
+}
+
+.journey-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.35rem, 4vw, 1.75rem);
+  text-align: center;
+  color: #9a3412;
+}
+
+.journey-mascot {
+  margin: 0 0 0.35rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.45;
+  text-align: center;
+  color: #7c2d12;
+}
+
+.journey-progress-block {
+  margin-bottom: 1rem;
+}
+
+.journey-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #78350f;
+  margin-bottom: 0.35rem;
+}
+
+.journey-progress-count {
+  font-weight: 800;
+  color: #b45309;
+}
+
+.journey-progress-track {
+  height: 1.1rem;
+  border-radius: 999px;
+  background: #fde68a;
+  border: 2px solid #fbbf24;
+  overflow: hidden;
+}
+
+.journey-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #22c55e, #eab308);
+  transition: width 0.45s ease-out;
+}
+
+.journey-stars-block {
+  margin-bottom: 0.85rem;
+}
+
+.journey-stars-label {
+  margin: 0 0 0.45rem;
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: #92400e;
+  text-align: center;
+}
+
+.journey-stars {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem 0.35rem;
+}
+
+.journey-star--filled {
+  font-size: 1.65rem;
+  line-height: 1;
+  color: #eab308;
+  text-shadow: 0 1px 0 #ca8a04;
+}
+
+.journey-stars-more {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #b45309;
+  margin-left: 0.15rem;
+}
+
+.journey-stars-empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+}
+
+.journey-star-outline {
+  font-size: 1.5rem;
+  color: #fcd34d;
+  opacity: 0.85;
+}
+
+.journey-stars--entrance {
+  animation: journeyStarsPop 0.9s ease-out;
+}
+
+@keyframes journeyStarsPop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey-progress-fill {
+    transition: none;
+  }
+
+  .journey-stars--entrance {
+    animation: none;
+  }
+}
+
+.journey-streak {
+  margin: 0 0 0.85rem;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #a16207;
+}
+
+.journey-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.65rem;
+}
+
+.journey-cta {
+  min-width: 12rem;
+}
+
+.journey-parent-details {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #78716c;
+}
+
+.journey-parent-details summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #a8a29e;
+  padding: 0.35rem 0;
+}
+
+.journey-parent-details summary:hover {
+  color: #78716f;
+}
+
+.journey-parent-details p {
+  margin: 0.35rem 0 0;
+  line-height: 1.5;
 }
