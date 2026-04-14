@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
+import { CloudflareWebAnalytics } from "@/components/cloudflare-web-analytics";
 import { ProgressProvider } from "@/components/progress-context";
 import "./globals.css";
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={nunito.variable}>
       <body>
         <ProgressProvider>{children}</ProgressProvider>
+        <CloudflareWebAnalytics />
       </body>
     </html>
   );
