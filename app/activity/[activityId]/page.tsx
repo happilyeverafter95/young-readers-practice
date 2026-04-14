@@ -2,14 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParams } from "next/navigation";
-import { getActivityById, publishedStages } from "@/lib/content/activities";
+import { getActivityById, getActivityQuestionsInPlayOrder, publishedStages } from "@/lib/content/activities";
+import { logIncorrectAnswer } from "@/lib/activityAnswerLog";
 import { useProgress } from "@/components/progress-context";
 
 export default function ActivityPage() {
   const params = useParams<{ activityId: string }>();
   const activity = getActivityById(params.activityId);
+  const playQuestions = useMemo(
+    () => (activity ? getActivityQuestionsInPlayOrder(activity) : []),
+    [activity]
+  );
   const { completeOneActivity, progress } = useProgress();
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -45,11 +50,11 @@ export default function ActivityPage() {
     );
   }
 
-  const question = activity.questions[index];
-  const isLast = index === activity.questions.length - 1;
+  const question = playQuestions[index];
+  const isLast = index === playQuestions.length - 1;
 
   const doneMessage = (() => {
-    const percent = Math.round((correctCount / activity.questions.length) * 100);
+    const percent = Math.round((correctCount / playQuestions.length) * 100);
     if (percent >= 90) return "Amazing work! You are a reading superstar!";
     if (percent >= 70) return "Great reading! Keep going!";
     return "Nice effort! Practice makes progress!";
@@ -79,6 +84,15 @@ export default function ActivityPage() {
       setCorrectCount((value) => value + 1);
       setFeedbackModal("correct");
     } else {
+      const correctOption = currentQuestion.options[currentQuestion.answerIndex] ?? "";
+      const selectedOption = currentQuestion.options[optionIndex] ?? "";
+      logIncorrectAnswer({
+        activityId: activeActivity.id,
+        questionId: currentQuestion.id,
+        stage: activeActivity.stage,
+        selectedOption,
+        correctOption
+      });
       setFeedbackModal("incorrect");
     }
   }
@@ -87,23 +101,29 @@ export default function ActivityPage() {
     setFeedbackModal(null);
     setSelected(null);
     if (isLast) {
-      completeOneActivity(activeActivity.id, correctCount, activeActivity.questions.length);
+      completeOneActivity(activeActivity.id, correctCount, playQuestions.length);
       setShowCelebration(true);
       return;
     }
     setIndex((value) => value + 1);
   }
 
-  function handleIncorrectTryAgain() {
+  function handleIncorrectContinue() {
     setFeedbackModal(null);
     setSelected(null);
+    if (isLast) {
+      completeOneActivity(activeActivity.id, correctCount, playQuestions.length);
+      setShowCelebration(true);
+      return;
+    }
+    setIndex((value) => value + 1);
   }
 
   function handleInformationalContinue() {
     const nextCorrect = correctCount + 1;
     setCorrectCount(nextCorrect);
     if (isLast) {
-      completeOneActivity(activeActivity.id, nextCorrect, activeActivity.questions.length);
+      completeOneActivity(activeActivity.id, nextCorrect, playQuestions.length);
       setShowCelebration(true);
       return;
     }
@@ -146,7 +166,7 @@ export default function ActivityPage() {
       <h1>{activeActivity.title}</h1>
       <p>{activeActivity.instructions}</p>
       <p className="small-text">
-        Question {index + 1} of {activeActivity.questions.length}
+        Question {index + 1} of {playQuestions.length}
       </p>
 
       <section className="question-card">
@@ -229,15 +249,15 @@ export default function ActivityPage() {
               ✗
             </div>
             <h2 id="feedback-modal-wrong-title" className="feedback-modal-heading">
-              Try again
+              Not quite
             </h2>
             <p className="feedback-modal-message">
               {activeActivity.stage === 1
-                ? "That is not the right word. Pick another answer."
-                : "That is not the right answer. Try another choice!"}
+                ? `That is not the right word. The answer is “${currentQuestion.options[currentQuestion.answerIndex] ?? ""}”.`
+                : `That is not the right answer. The answer is “${currentQuestion.options[currentQuestion.answerIndex] ?? ""}”.`}
             </p>
-            <button type="button" className="feedback-modal-button feedback-modal-button--wrong" onClick={handleIncorrectTryAgain}>
-              OK
+            <button type="button" className="feedback-modal-button feedback-modal-button--wrong" onClick={handleIncorrectContinue}>
+              {isLast ? "Finish" : "Next"}
             </button>
           </div>
         </div>
