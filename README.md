@@ -15,12 +15,12 @@ Hosted at https://young-readers-practice.mandygu925.workers.dev/
 
 1. Install dependencies:
    - `npm install`
-2. **Local environment (optional):** copy `.env.example` to `.env.local`, then edit `.env.local` and fill in any keys you need.
-   - For Cloudflare Web Analytics locally, set `NEXT_PUBLIC_CF_WEB_ANALYTICS_TOKEN` to the token from **Cloudflare dashboard → Web Analytics → your site → Manage site** (same value you use in CI). If you leave it blank, the app runs without the analytics beacon.
-3. Start dev server:
+2. Start dev server:
    - `npm run dev`
-4. Open:
+3. Open:
    - [http://localhost:3000](http://localhost:3000)
+
+Cloudflare Web Analytics is production-only and does not run during local development.
 
 ## Replacing Placeholder Images
 
