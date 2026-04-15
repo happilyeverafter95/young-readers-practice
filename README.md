@@ -19,12 +19,3 @@ Hosted at https://young-readers-practice.mandygu925.workers.dev/
    - `npm run dev`
 3. Open:
    - [http://localhost:3000](http://localhost:3000)
-
-## Replacing Placeholder Images
-
-Each major image slot now has its own file path in `public/placeholders/`.
-
-- Home hero: `/placeholders/jellycat.png`
-- Activity placeholders: `/placeholders/stage1-first-words-1.svg` through `/placeholders/stage4-comprehension-2.svg`
-
-To replace imagery later, swap any individual file or update `imagePlaceholder` values in `lib/content/activities.ts`.
