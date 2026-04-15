@@ -20,8 +20,6 @@ Hosted at https://young-readers-practice.mandygu925.workers.dev/
 3. Open:
    - [http://localhost:3000](http://localhost:3000)
 
-Cloudflare Web Analytics is production-only and does not run during local development.
-
 ## Replacing Placeholder Images
 
 Each major image slot now has its own file path in `public/placeholders/`.
